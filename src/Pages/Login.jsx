@@ -15,7 +15,7 @@ function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try{
-      const res = await axios.post("http://localhost:5000/api/login", {username, password}, {headers: { "Content-Type": "application/json" }});
+      const res = await axios.post("/api/login", {username, password}, {headers: { "Content-Type": "application/json" }});
       if(res.data === "name"){
         setError("This username does not exist.");
       } else if(res.data === "password"){

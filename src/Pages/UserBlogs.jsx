@@ -18,7 +18,7 @@ function UserBlogs() {
 
     const logout = async () => {
       const token = { token: user.refreshToken };
-      axios.post("http://localhost:5000/api/logout", token, {
+      axios.post("/api/logout", token, {
           headers: {
               "Content-Type": "application/json",
               "authorization": "Bearer " + user.accessToken
@@ -28,20 +28,24 @@ function UserBlogs() {
     };
 
     const deleteUser = () => {
+      try{
       const userId = {id: decodedUser.user._id};
-      axios.delete("http://localhost:5000/api/logout/delete", userId, {
-          headers: {
-              "Content-Type": "application/json",
-              "authorization": "Bearer " + user.accessToken
-              }
+      axios.delete(`/api/logout/${decodedUser.user._id}/delete`, {
+        headers: {
+          "Content-Type": "application/json",
+          "authorization": "Bearer " + user.accessToken
+        }
       });
       setUser(false);
       navigate('/posts');
+      }catch(err){
+        console.log(err);
+      };
     };
 
     useEffect(() => {
         const decoded = jwtDecode(user.accessToken);
-        axios({method: "GET", url: `http://localhost:5000/api/user/${decoded.user._id}`}, {headers: {"Content-Type": "application/json"}})
+        axios({method: "GET", url: `/api/user/${decoded.user._id}`}, {headers: {"Content-Type": "application/json"}})
         .then(res => setPosts(res.data)
         ).catch(err => console.log(err));   
       }, []);

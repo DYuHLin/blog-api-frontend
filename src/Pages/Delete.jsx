@@ -23,7 +23,7 @@ function Delete() {
     const decoded = jwtDecode(user.accessToken);
 
     try{
-      axios.delete(`http://localhost:5000/api/${id}/delete`, {
+      axios.delete(`/api/${id}/delete`, {
       headers: {
                 "Content-Type": "application/json",
                 "authorization": "Bearer " + user.accessToken
@@ -36,7 +36,7 @@ function Delete() {
   };
 
   useEffect(() => {
-    axios({method:'GET', url:`http://localhost:5000/api/${id}`})
+    axios({method:'GET', url:`/api/${id}`})
         .then(res => {
           setPost(res.data);
         })

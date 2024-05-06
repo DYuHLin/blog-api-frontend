@@ -13,7 +13,7 @@ function RootLayout() {
 
   const refreshToken = async () => {
     try{
-        const res = await axios.post("http://localhost:5000/api/refresh", { token: user.refreshToken });
+        const res = await axios.post("/api/refresh", { token: user.refreshToken });
         setUser({
             ...user,
             accessToken: res.data.accessToken,
@@ -43,7 +43,7 @@ function RootLayout() {
 
   const logout = async () => {
     const token = { token: user.refreshToken };
-    axios.post("http://localhost:5000/api/logout", token, {
+    axios.post("/api/logout", token, {
         headers: {
             "Content-Type": "application/json",
             "authorization": "Bearer " + user.accessToken

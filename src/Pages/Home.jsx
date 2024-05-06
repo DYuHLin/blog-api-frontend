@@ -8,15 +8,16 @@ function Home() {
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
-    axios({method:'GET', url:"http://localhost:5000/api"}, {headers: { "Content-Type": "application/json" }})
+    axios({method:'GET', url:"/api"}, {headers: { "Content-Type": "application/json" }})
         .then(res => {
           setPosts(res.data);
         })
         .catch(err => console.log(err));  
     
-  }, []);
+  }, [posts]);
 
   return (
+    
     <section>
       <h1 className='home-title'>Welcome to my blog site</h1>
       {posts === false ? <p>There are no posts</p> :

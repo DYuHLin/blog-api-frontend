@@ -9,7 +9,7 @@ function Comments(props) {
 
   const deleteComments = (id) => {
     try{
-      axios.delete(`http://localhost:5000/api/${id}/deletecomment`, {
+      axios.delete(`/api/${id}/deletecomment`, {
       headers: {
         "Content-Type": "application/json",
         "authorization": "Bearer " + user.accessToken
