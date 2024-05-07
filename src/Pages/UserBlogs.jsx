@@ -50,7 +50,7 @@ function UserBlogs() {
 
     useEffect(() => {
         const decoded = jwtDecode(user.accessToken);
-        axios({method: "GET", url: `/api/user/${decoded.user._id}`}, {headers: {"Content-Type": "application/json"}})
+        axios({method: "GET", url: `${import.meta.env.VITE_URI}/api/user/${decoded.user._id}`}, {headers: {"Content-Type": "application/json"}})
         .then(res => setPosts(res.data)
         ).catch(err => console.log(err));   
       }, []);
