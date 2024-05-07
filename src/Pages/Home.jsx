@@ -10,14 +10,11 @@ function Home() {
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useContext(UserContext);
 
-  const getBlogs = () => {
+  const getBlogs = async () => {
     setLoading(true);
     try{
-      axios({method:'GET', url:"/api"}, {headers: { "Content-Type": "application/json" }})
-        .then(res => {
-          setPosts(res.data);
-        })
-        .catch(err => console.log(err));  
+      const { data } = await axios.get("/api", {headers: { "Content-Type": "application/json" }})
+        setPosts(data);
       setLoading(false);
     } catch(err){
       toast.error(err.message);
