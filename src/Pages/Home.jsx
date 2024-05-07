@@ -13,7 +13,7 @@ function Home() {
   const getBlogs = async () => {
     setLoading(true);
     try{
-      const { data } = await axios.get("/api", {headers: { "Content-Type": "application/json" }})
+      const { data } = await axios.get("https://blog-api-backend-1tt8.onrender.com/api", {headers: { "Content-Type": "application/json" }})
         setPosts(data);
       setLoading(false);
     } catch(err){
