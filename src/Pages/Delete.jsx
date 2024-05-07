@@ -3,6 +3,8 @@ import {jwtDecode} from 'jwt-decode'
 import UserContext from '../UserContext'
 import {useNavigate, useParams, Navigate} from 'react-router-dom'
 import axios from 'axios'
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Delete() {
   const [post, setPost] = useState(false);
@@ -32,7 +34,8 @@ function Delete() {
     }catch(err){
       console.log(err);
     };
-    navigate('/posts');
+    navigate('/');
+    toast.success("You have deleted this blog successfully");
   };
 
   useEffect(() => {

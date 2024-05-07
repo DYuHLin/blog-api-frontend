@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Register() {
 
@@ -29,10 +31,13 @@ function Register() {
            .then(status => {
             if(status === "failed"){
               setError("This username already exists.");
+              toast.error("There was an error");
             } else if(status === "match"){
               setError("your passwords do not match.");
+              toast.error("There was an error");
             } else if(status === "ok"){
-              navigate("/posts/login");
+              navigate("/login");
+              toast.success("You have registered successfully");
             };
             console.log(status)
           })
@@ -57,7 +62,7 @@ function Register() {
         
       </form>
       <p className="error">{error}</p>
-      <Link to={"/posts/login"} className="link">Login</Link>
+      <Link to={"/login"} className="link">Login</Link>
       </section>
   )
 }

@@ -17,19 +17,19 @@ function Router() {
 
     const router = createBrowserRouter(
         createRoutesFromElements(
-            <Route path='/posts' element={<RootLayout />}>
+            <Route path='/' element={<RootLayout />}>
                 <Route index element={<Home />} />
-                <Route path='/posts/login' element={<Login />} />
-                <Route path='/posts/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+                <Route path='/register' element={<Register />} />
 
                 <Route element = {<ProtectedRoutes />}>
-                    <Route path='/posts/userblogs' element={<UserBlogs />} />
-                    <Route path='/posts/create' element={<Create />} />
-                    <Route path='/posts/:id/update' element={<Update />} />
-                    <Route path='/posts/:id/delete' element={<Delete />} />
+                    <Route path='/userblogs' element={<UserBlogs />} />
+                    <Route path='/create' element={<Create />} />
+                    <Route path='/:id/update' element={<Update />} />
+                    <Route path='/:id/delete' element={<Delete />} />
                 </Route>
                 
-                <Route path='/posts/:id' element={<Detail />} />
+                <Route path='/:id' element={<Detail />} />
             </Route>
         )
 )

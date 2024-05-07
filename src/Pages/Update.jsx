@@ -4,6 +4,9 @@ import {jwtDecode} from 'jwt-decode'
 import UserContext from '../UserContext';
 import {useNavigate, useParams, Navigate} from 'react-router-dom';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
+
 
 function Update() {
   const [title, setTitle] = useState('');
@@ -45,7 +48,8 @@ function Update() {
       console.log(err);
     };
     
-    navigate('/posts');
+    navigate('/');
+    toast.success("You have updated this blog successfully");
   };
 
   useEffect(() => {

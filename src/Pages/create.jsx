@@ -4,6 +4,8 @@ import {jwtDecode} from 'jwt-decode'
 import UserContext from '../UserContext';
 import {useNavigate} from 'react-router-dom';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function create() {
   const [title, setTitle] = useState('');
@@ -36,7 +38,8 @@ function create() {
     } catch(err){
       console.log(err);
     }; 
-    navigate('/posts');
+    toast.success("You have posted this blog successfully");
+    navigate('/');
   };
 
   return (

@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react'
 import axios from 'axios';
 import UserContext from '../UserContext';
 import {Link, useNavigate} from 'react-router-dom';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -18,11 +20,14 @@ function Login() {
       const res = await axios.post("/api/login", {username, password}, {headers: { "Content-Type": "application/json" }});
       if(res.data === "name"){
         setError("This username does not exist.");
+        toast.error("There was an error");
       } else if(res.data === "password"){
         setError("Your password is incorrect");
+        toast.error("There was an error");
       } else {
         setUser(res.data);
-        navigate('/posts');
+        navigate('/');
+        toast.success("You have logged in successfully");
       };
       
     }catch(err){
@@ -39,7 +44,7 @@ function Login() {
           <button>Login</button>
         </form>
         <p className="error">{error}</p>
-        <Link to={"/posts/register"} className="link">Register</Link>
+        <Link to={"/register"} className="link">Register</Link>
       </section>
   )
 }

@@ -4,6 +4,8 @@ import '../../assets/App.css'
 import UserContext from '../../UserContext'
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function RootLayout() {
 
@@ -50,6 +52,8 @@ function RootLayout() {
             },
     });
     setUser(false);
+    navigate('/login');
+    toast.success("You have logged out successfully");
   };
 
   const toggleHamburger = () => {
@@ -64,20 +68,12 @@ function RootLayout() {
     <div className="root-layout">
         <header>
         <nav>
-            <p className='header-title'><NavLink to="/posts" className="head-link">Blog</NavLink></p>
+            <p className='header-title'><NavLink to="/" className="head-link">Blog</NavLink></p>
                 <ul className={`${menu}`}>
-                    {
-                        user ?  <li onClick={() => setMenu("")}><NavLink to="/posts/create" className="head-link">Create</NavLink></li> : ''
-                    }
-                    {
-                        user ?  <li onClick={() => setMenu("")}><a onClick={logout} className='head-link'>Logout</a></li> : ''
-                    }
-                    {
-                        user ?  <li onClick={() => setMenu("")}><NavLink to="/posts/userblogs" className="head-link">{jwtDecode(user.accessToken).user.username}</NavLink></li> : ''
-                    }
-                    {
-                        !user ?  <li onClick={() => setMenu("")}><NavLink to="/posts/login" className="head-link">Login</NavLink></li> : ''
-                    }
+                    {user ?  <li onClick={() => setMenu("")}><NavLink to="/create" className="head-link">Create</NavLink></li> : ''}
+                    {user ?  <li onClick={() => setMenu("")}><a onClick={logout} className='head-link'>Logout</a></li> : ''}
+                    {user ?  <li onClick={() => setMenu("")}><NavLink to="/userblogs" className="head-link">{jwtDecode(user.accessToken).user.username}</NavLink></li> : ''}
+                    {!user ?  <li onClick={() => setMenu("")}><NavLink to="/login" className="head-link">Login</NavLink></li> : ''}
                 </ul>
             <div className={`menu-btn ${menu}`} onClick={toggleHamburger}>
                 <span className="bar"></span>
@@ -90,6 +86,7 @@ function RootLayout() {
         <main>
             <Outlet />
         </main>     
+        <ToastContainer />
     </div>
   )
 }

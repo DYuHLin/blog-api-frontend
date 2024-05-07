@@ -2,6 +2,8 @@ import React, { useContext } from 'react';
 import {jwtDecode} from 'jwt-decode';
 import UserContext from '../UserContext';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function Comments(props) {
   const { user } = useContext(UserContext);
@@ -18,6 +20,7 @@ function Comments(props) {
     }catch(err){
       console.log(err);
     };
+    toast.success("Comment deleted");
   };
 
   return (

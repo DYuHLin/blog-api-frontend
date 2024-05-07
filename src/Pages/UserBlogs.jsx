@@ -3,6 +3,8 @@ import UserContext from '../UserContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'
 
 function UserBlogs() {
     const [posts, setPosts] = useState(false);
@@ -25,6 +27,8 @@ function UserBlogs() {
               }
       });
       setUser(false);
+      navigate('/');
+      toast.success("You have logged out successfully");
     };
 
     const deleteUser = () => {
@@ -37,7 +41,8 @@ function UserBlogs() {
         }
       });
       setUser(false);
-      navigate('/posts');
+      navigate('/');
+      toast.success("You have deleted your account successfully");
       }catch(err){
         console.log(err);
       };
@@ -61,7 +66,7 @@ function UserBlogs() {
       {posts === false ? <p>There are no posts</p> :
       posts.map((blog) => {
         return(
-          <Link to={`/posts/${blog._id}`} className="blog blog-title-home" key={blog._id}>    
+          <Link to={`/${blog._id}`} className="blog blog-title-home" key={blog._id}>    
             <h3 className="blog-title-home">{blog.title}</h3>
             <br/>
             <span className="blog-title-home">{new Date(blog.date).toLocaleString()}</span>
