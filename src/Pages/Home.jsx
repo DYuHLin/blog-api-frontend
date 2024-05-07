@@ -4,7 +4,7 @@ import UserContext from '../UserContext';
 import axios from 'axios';
 
 function Home() {
-  const [posts, setPosts] = useState(false);
+  const [posts, setPosts] = useState([]);
   const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function Home() {
     
     <section>
       <h1 className='home-title'>Welcome to my blog site</h1>
-      {posts === false ? <p>There are no posts</p> :
+      {posts.length === 0 ? <p>There are no posts</p> :
       posts.map((blog) => {
         return(
           <Link key={blog._id} to={`${blog._id}`} className="blog blog-title-home">
