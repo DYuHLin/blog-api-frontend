@@ -6,7 +6,7 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
 
 function Home() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([{}]);
   const [loading, setLoading] = useState(true);
   const { user, setUser } = useContext(UserContext);
 
@@ -21,7 +21,6 @@ function Home() {
       setLoading(false);
     };
   };
-
   useEffect(() => {
     getBlogs();
   }, []);
