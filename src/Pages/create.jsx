@@ -29,7 +29,7 @@ function create() {
     const post = {user: decoded.user._id, title: title, content: ContentRef.current.getContent(), published: publishVal};
 
     try{
-      axios.post('/api/create', post, {
+      axios.post(`${import.meta.env.VITE_URI}/api/create`, post, {
       headers: {
                 "Content-Type": "application/json",
                 "authorization": "Bearer " + user.accessToken

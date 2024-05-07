@@ -20,7 +20,7 @@ function UserBlogs() {
 
     const logout = async () => {
       const token = { token: user.refreshToken };
-      axios.post("/api/logout", token, {
+      axios.post(`${import.meta.env.VITE_URI}/api/logout`, token, {
           headers: {
               "Content-Type": "application/json",
               "authorization": "Bearer " + user.accessToken
@@ -34,7 +34,7 @@ function UserBlogs() {
     const deleteUser = () => {
       try{
       const userId = {id: decodedUser.user._id};
-      axios.delete(`/api/logout/${decodedUser.user._id}/delete`, {
+      axios.delete(`${import.meta.env.VITE_URI}/api/logout/${decodedUser.user._id}/delete`, {
         headers: {
           "Content-Type": "application/json",
           "authorization": "Bearer " + user.accessToken

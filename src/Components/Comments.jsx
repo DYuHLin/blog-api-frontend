@@ -11,7 +11,7 @@ function Comments(props) {
 
   const deleteComments = (id) => {
     try{
-      axios.delete(`/api/${id}/deletecomment`, {
+      axios.delete(`${import.meta.env.VITE_URI}/api/${id}/deletecomment`, {
       headers: {
         "Content-Type": "application/json",
         "authorization": "Bearer " + user.accessToken

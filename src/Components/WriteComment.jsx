@@ -14,7 +14,7 @@ function WriteComment(props) {
         const comments = {user: decoded.user._id, post: props.post._id, content: comment};
 
         try{
-          axios.post(`/api/${props.paramId}/create`, comments, {
+          axios.post(`${import.meta.env.VITE_URI}/api/${props.paramId}/create`, comments, {
           headers: {
             "Content-Type": "application/json",
             "authorization": "Bearer " + user.accessToken

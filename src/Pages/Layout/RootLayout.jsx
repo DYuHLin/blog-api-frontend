@@ -15,7 +15,7 @@ function RootLayout() {
 
   const refreshToken = async () => {
     try{
-        const res = await axios.post("/api/refresh", { token: user.refreshToken });
+        const res = await axios.post(`${import.meta.env.VITE_URI}/api/refresh`, { token: user.refreshToken });
         setUser({
             ...user,
             accessToken: res.data.accessToken,
@@ -45,7 +45,7 @@ function RootLayout() {
 
   const logout = async () => {
     const token = { token: user.refreshToken };
-    axios.post("/api/logout", token, {
+    axios.post(`${import.meta.env.VITE_URI}/api/logout`, token, {
         headers: {
             "Content-Type": "application/json",
             "authorization": "Bearer " + user.accessToken

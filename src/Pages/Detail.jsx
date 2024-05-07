@@ -19,13 +19,13 @@ function Detail() {
     const [decodedUser, setDecodedUser] = useState(getUserDecoded);
 
     useEffect(() => {
-      axios({method:'GET', url:`/api/${id}`}, {headers: { "Content-Type": "application/json"}})
+      axios({method:'GET', url:`${import.meta.env.VITE_URI}/api/${id}`}, {headers: { "Content-Type": "application/json"}})
         .then(res => setPost(res.data))
         .catch(err => console.log(err)); 
     }, []);
 
     useEffect(() => {     
-      axios({method:'GET', url:`/api/${id}/comments`}, {headers: { "Content-Type": "application/json"}})
+      axios({method:'GET', url:`${import.meta.env.VITE_URI}/api/${id}/comments`}, {headers: { "Content-Type": "application/json"}})
         .then(res => setComments(res.data))
         .catch(err => console.log(err)); 
 

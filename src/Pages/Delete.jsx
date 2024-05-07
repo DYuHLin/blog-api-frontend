@@ -25,7 +25,7 @@ function Delete() {
     const decoded = jwtDecode(user.accessToken);
 
     try{
-      axios.delete(`/api/${id}/delete`, {
+      axios.delete(`${import.meta.env.VITE_URI}/api/${id}/delete`, {
       headers: {
                 "Content-Type": "application/json",
                 "authorization": "Bearer " + user.accessToken
@@ -39,7 +39,7 @@ function Delete() {
   };
 
   useEffect(() => {
-    axios({method:'GET', url:`/api/${id}`})
+    axios({method:'GET', url:`${import.meta.env.VITE_URI}/api/${id}`})
         .then(res => {
           setPost(res.data);
         })
