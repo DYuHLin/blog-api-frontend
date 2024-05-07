@@ -15,7 +15,7 @@ export const UserProvider = ({children}) => {
     const ProtectedRoutes = () => {
 
         return (
-            user === false ? (<Navigate to="/posts/login" />) : user.accessToken ? (<Outlet /> ) : ""
+            user === false ? (<Navigate to="/login" />) : user.accessToken ? (<Outlet /> ) : ""
         )
     };
 

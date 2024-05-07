@@ -46,7 +46,7 @@ function create() {
     <section>
       <form method="POST" onSubmit={handleSubmit}>
         <input type="text" required name='title' id='title' className='title' onChange={(e) => setTitle(e.target.value)} placeholder='Title'/>
-        <Editor apiKey='7b9bztrodn0kidftvkbg5tuk6lqiwpwtl934lt1s1av1ghzr' name="body" id="body" required className='body' 
+        <Editor apiKey={import.meta.env.VITE_EDIT} name="body" id="body" required className='body' 
           onInit={(evt, editor) => ContentRef.current = editor}/>
         
         <div className="check-group">
