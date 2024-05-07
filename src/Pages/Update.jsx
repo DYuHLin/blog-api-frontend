@@ -70,7 +70,7 @@ function Update() {
       <label htmlFor="title">Title: </label>
         <input type="text" required name='title' id='title' className='title' value={title} onChange={(e) => setTitle(e.target.value)}/>
         <label htmlFor="body">Body: </label>
-        <Editor apiKey={import.meta.env.VITE_EDIT} name="body" id="body" required className='body' 
+        <Editor apiKey='7b9bztrodn0kidftvkbg5tuk6lqiwpwtl934lt1s1av1ghzr' name="body" id="body" required className='body' 
           onInit={(evt, editor) => ContentRef.current = editor}
           initialValue= {post.content}/>
         <label htmlFor="publish">Publish: </label>
