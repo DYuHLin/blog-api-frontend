@@ -10,6 +10,7 @@ function UserBlogs() {
     const [posts, setPosts] = useState(false);
     const { user, setUser } = useContext(UserContext);
     const [visibility, setVisibility] = useState("hidden");
+    const [loading, setLoading] = useState(true);
 
     const getUserDecoded = () => {
       return user === false ? false : jwtDecode(user.accessToken);
@@ -63,7 +64,8 @@ function UserBlogs() {
             <a onClick={() => setVisibility("")} className='head-link2'>Delete account</a>
       </div>
       <button className={visibility} onClick={deleteUser}>Are you sure?</button>
-      {posts === false ? <p>There are no posts</p> :
+      {loading && posts.length === 0 ? <p>Fetching blogs...</p> :
+      posts === false ? <p>There are no posts</p> :
       posts.map((blog) => {
         return(
           <Link to={`/${blog._id}`} className="blog blog-title-home" key={blog._id}>    
