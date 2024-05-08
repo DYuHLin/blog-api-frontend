@@ -85,8 +85,10 @@ function Update() {
         <div className="ql-editor">
           <ReactQuill modules={module} theme="snow" value={blog} onChange={setBlog} />
           </div> 
-        <label htmlFor="publish">Publish: </label>
-        <input type="checkbox" id='publish' name='publish' className='publish'/>
+          <div className="check-group">
+            <label htmlFor="publish">Publish: </label>
+            <input type="checkbox" id='publish' name='publish' className='publish'/>
+          </div>
         <button>Post Blog</button>
       </form>
     </section>
