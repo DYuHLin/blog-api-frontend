@@ -25,7 +25,8 @@ function Comments(props) {
 
   return (
       <div className="blog">
-        {props.comments.map((comment) => {
+        {props.comments.length === 0 ? <p>There are no comments</p> :
+        props.comments.map((comment) => {
           return(
             <div className='comment-section' key={comment._id}>
               <div className="comment2">

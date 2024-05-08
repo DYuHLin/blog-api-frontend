@@ -21,7 +21,7 @@ function Home() {
           toast.error(err.message);
         });  
     
-  }, []);
+  }, [posts]);
 
   return (
     

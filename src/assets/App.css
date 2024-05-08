@@ -82,6 +82,17 @@ h1{
     padding-right: 10px;
 }
 
+.ql-editor{
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    border: 1px solid black;
+}
+
+img{
+    max-width: 100%;
+}
+
 section{
     padding-top: 60px;
     display: flex;
