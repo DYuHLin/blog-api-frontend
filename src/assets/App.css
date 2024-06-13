@@ -100,6 +100,11 @@ section{
     align-items: center;
 }
 
+.guest{
+    cursor: pointer;
+    margin-top: 10px;
+}
+
 .blog{
     padding: 24px;
     width: 35%;

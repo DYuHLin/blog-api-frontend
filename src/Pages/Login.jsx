@@ -49,7 +49,7 @@ function Login() {
         </form>
         <p className="error">{error}</p>
         <Link to={"/register"} className="link">Register</Link>
-        <p onClick={() => guestSign}>Sign in as guest</p>
+        <p className='guest' onClick={guestSign}>Sign in as guest</p>
       </section>
   )
 }
