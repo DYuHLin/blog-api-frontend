@@ -35,6 +35,10 @@ function Login() {
     };
   };
 
+  const guestSign = async () => {
+    await axios.post(`${import.meta.env.VITE_URI}/api/login`, {username: 'guest', password: 'guest123'}, {headers: { "Content-Type": "application/json" }});
+  };
+
   return (
       <section>
         <h1>Login</h1>
@@ -45,6 +49,7 @@ function Login() {
         </form>
         <p className="error">{error}</p>
         <Link to={"/register"} className="link">Register</Link>
+        <p onClick={() => guestSign}>Sign in as guest</p>
       </section>
   )
 }
