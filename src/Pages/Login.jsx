@@ -36,7 +36,23 @@ function Login() {
   };
 
   const guestSign = async () => {
-    await axios.post(`${import.meta.env.VITE_URI}/api/login`, {username: 'guest', password: 'guest123'}, {headers: { "Content-Type": "application/json" }});
+    try{
+      const res = await axios.post(`${import.meta.env.VITE_URI}/api/login`, {username: 'guest', password: 'guest123'}, {headers: { "Content-Type": "application/json" }});
+      if(res.data === "name"){
+        setError("This username does not exist.");
+        toast.error("There was an error");
+      } else if(res.data === "password"){
+        setError("Your password is incorrect");
+        toast.error("There was an error");
+      } else {
+        setUser(res.data);
+        navigate('/');
+        toast.success("You have logged in successfully");
+      };
+      
+    }catch(err){
+      console.log(err);
+    };
   };
 
   return (
